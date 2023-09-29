@@ -20,8 +20,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={figtree.className}>
-        <Ligth width={300} heigth={300} top={-150} left={-150}/>
         <NavBar />
+        <Ligth id={1}/>
+        <Ligth id={2}/>
         {children}
       </body>
     </html>

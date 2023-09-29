@@ -1,13 +1,9 @@
 interface Props{
-    width: number,
-    heigth: number,
-    top:number,
-    left:number,
+    id:number,
 }
 
-export default function Ligth(params:Props) {
-    const {width, heigth, top, left} = params;
+export default function Ligth({id}:Props) {
     return(
-        <div style={{width:`${width}px`, height:`${heigth}px`, top:`${top}px`, left:`${left}px`}} className="Ligth"></div>
+        <div id={`Ligth${id}`} className="Ligth"></div>
     )
 }

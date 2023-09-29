@@ -10,7 +10,7 @@ export default function MainContent() {
             <div className='MainContent__Section MainContent__Section--First' style={{ backgroundImage: `url(${imgURL})` }}>
                 <Link href={'/'}>Insterstellar</Link>
                 <p>
-                    "Interstellar" is a science fiction movie that follows a group of astronauts on a desperate mission to find a new home for humanity in space due to Earth's environmental crisis.
+                &quotInterstellar&quot is a science fiction movie that follows a group of astronauts on a desperate mission to find a new home for humanity in space due to Earth&aposs environmental crisis.
                 </p>
                 <div className='MainContent__Categories'>
                     <span>Sci-Fi</span>
