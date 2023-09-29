@@ -1,0 +1,37 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  /* Primary Colors */
+  --Accent-Blue: #359fe3;
+  --Dark-Blue: #0f161b;
+  --Dark-Blue-Bg: rgba(15, 22, 27, 0.851);
+  --White: #ffffff;
+  --Body-bg: #11181D;
+
+
+  /* Effects */
+  --Backdrop-Filter: 32px; 
+  
+  /* Layout */
+  --Nav-Width: 200px;
+}
+
+body{
+  color: var(--White);
+  background-color: var(--Body-bg)
+}
+
+/* Components */
+
+//Ligth
+@import '../components/Ligth/ligth';
+
+// NavBar
+@import '../components/NavBar/NavBar';
+
+// MainContent
+@import '../components/MainContent/mainContent'

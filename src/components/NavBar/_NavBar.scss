@@ -1,0 +1,29 @@
+.NavBar{
+    width: var(--Nav-Width);
+    height: 100vh;
+    background-color: var(--Dark-Blue-Bg);
+    backdrop-filter: blur(var(--Backdrop-Filter));
+
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+
+    & ul{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    & a{
+        color: var(--White);
+        text-decoration: none;
+    }
+
+    &__Li{
+        list-style: none;
+    }
+}

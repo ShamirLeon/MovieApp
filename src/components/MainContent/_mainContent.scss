@@ -1,0 +1,78 @@
+.MainContent{
+    background-color: #11181D;;
+    height: 65vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    margin-left: var(--Nav-Width);
+    color: var(--White);
+
+    & a{
+        font-size: 72px;
+        font-weight: 700;
+        color: var(--White);
+        text-decoration: none;
+    }   
+
+    & p{
+        font-weight: 400;
+    }
+
+    &__Section{
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        &--First{
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            padding: 40px;
+            gap: 16px;
+        }
+
+        &--Second{
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            padding: 40px;
+        }
+
+        &--Third{
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            padding: 40px;
+        }
+
+    }
+    &__Categories{
+        display: flex;
+        gap: 16px;
+        font-size: 16px;
+
+        & span{
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(2px);
+            text-transform: uppercase;
+        }
+    }
+}
+
+.SecondSection{
+    padding: 24px;
+    & a {
+        font-size: 32px;
+    }
+}
+
+ 
