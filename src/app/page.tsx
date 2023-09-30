@@ -1,10 +1,12 @@
+import styles from './page.module.scss'
 import MainContent from '@/components/MainContent/MainContent'
-import styles from './page.module.css'
+import UpcomingMovies from '@/components/UpcomingMovies/UpcomingMovies'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main className={styles.Main}>
       <MainContent />
+      <UpcomingMovies />
     </main> 
   )
 }
