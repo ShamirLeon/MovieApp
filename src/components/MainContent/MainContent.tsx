@@ -11,7 +11,7 @@ export default function MainContent() {
                 <img src={imgURL} alt="" className='MainContent__Image' />
                 <Link href={'/'}>Insterstellar</Link>
                 <p>
-                &quot Interstellar &quot is a science fiction movie that follows a group of astronauts on a desperate mission to find a new home for humanity in space due to Earth&aposs environmental crisis.
+                "Interstellar" is a science fiction movie that follows a group of astronauts on a desperate mission to find a new home for humanity in space due to Earth&aposs environmental crisis.
                 </p>
                 <div className='MainContent__Categories'>
                     <span>Sci-Fi</span>
