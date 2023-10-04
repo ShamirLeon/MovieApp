@@ -6,6 +6,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
 
+    margin-left: var(--Nav-Width);
     color: var(--White);
 
     & a{
@@ -31,7 +32,7 @@
         left: 0;
         bottom: 0;
 
-        mask-image: var(--Mask-Filter);
+        mask-image: linear-gradient(to top, transparent, var(--Body-bg));
         transition: all .5s ease-in-out;
     }
 

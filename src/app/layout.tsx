@@ -5,7 +5,7 @@ import { Figtree } from 'next/font/google'
 import NavBar from '@/components/NavBar/NavBar'
 import Ligth from '@/components/Ligth/Ligth'
 
-const figtree = Figtree({ subsets: ['latin'], weight:['300', '400', '700'] })
+const figtree = Figtree({ subsets: ['latin'], weight:['400', '700'] })
 
 export const metadata: Metadata = {
   title: 'Shamy Movie Application',

@@ -1,15 +1,10 @@
-// import MovieProvider from '@/Context/MoviesProvider'
-import styles from '../Styles/page.module.scss'
 import MainContent from '@/components/MainContent/MainContent'
-import UpcomingMovies from '@/components/UpcomingMovies/UpcomingMovies'
+import styles from './page.module.css'
 
 export default function Home() {
   return (
-    <main className={styles.Main}>
-      {/* <MovieProvider> */}
-        <MainContent />
-        <UpcomingMovies />
-      {/* </MovieProvider> */}
-    </main>
+    <main className={styles.main}>
+      <MainContent />
+    </main> 
   )
 }
