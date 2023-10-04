@@ -1,4 +1,4 @@
-import styles from '@/styles/components/Ligth.module.scss'
+import styles from '@/Styles/components/Ligth.module.scss'
 
 interface Props{
     id:number,
