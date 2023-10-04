@@ -1,5 +1,7 @@
 'use client'
 
+import styles from '@/styles/components/MainContent.module.scss'
+
 import Link from 'next/link'
 import Rating from '../Rating/Rating';
 import { MovieContext } from '@/Context/MoviesContext';
@@ -67,42 +69,44 @@ export default function MainContent() {
     }, [])
 
     return (
-        <div className='MainContent'>
+        <div className={styles.MainContent}>
             {
                 !loading ? (<>
-                    <div className='MainContent__Section MainContent__Section--First' >
+                    <div className={`${styles.MainContent__Section} ${styles.MainContent__SectionFirst}`} >
                         <Rating rating={ratedMovies[randomNumbers[0]].vote_average} top={40} />
                         <picture>
-                            <img src={`${IMG_URL}original${ratedMovies[randomNumbers[0]].backdrop_path}`} alt={ratedMovies[randomNumbers[0]].title} className='MainContent__Image' />
+                            <img src={`${IMG_URL}original${ratedMovies[randomNumbers[0]].backdrop_path}`} alt={ratedMovies[randomNumbers[0]].title} className={styles.MainContent__Image} />
                         </picture>
                         <Link href={'/'}>{ratedMovies[randomNumbers[0]].title}</Link>
                         <p>{ratedMovies[randomNumbers[0]].overview}</p>
-                        <div className='MainContent__Categories'>
+                        <div className={styles.MainContent__Categories}>
                             {
                                 ratedMovies[randomNumbers[0]].genre_ids.map((genre) => (
                                     <span key={genre}>{genresMap.get(genre)}</span>
                                 ))
                             }
                         </div>
-                        <div className='superposition'></div>
+                        <div className={styles.superposition}></div>
                     </div>
-                    <div className='MainContent__Section MainContent__Section--Second SecondSection'>
+
+                    <div className={`${styles.MainContent__Section} ${styles.MainContent__SectionSecond} ${styles.SecondSection}`}>
                         <Rating rating={ratedMovies[randomNumbers[1]].vote_average} top={24} />
                         <picture>
-                            <img src={`${IMG_URL}original${ratedMovies[randomNumbers[1]].backdrop_path}`} alt={ratedMovies[randomNumbers[0]].title} className='MainContent__Image' />
+                            <img src={`${IMG_URL}original${ratedMovies[randomNumbers[1]].backdrop_path}`} alt={ratedMovies[randomNumbers[0]].title} className={styles.MainContent__Image} />
                         </picture>
                         <Link href={'/'} >{ratedMovies[randomNumbers[1]].title}</Link>
                         <p>{`${ratedMovies[randomNumbers[1]].release_date.split('-')[0]}, ${genresMap.get(ratedMovies[randomNumbers[1]].genre_ids[0])}`}</p>
-                        <div className='superposition'></div>
+                        <div className={styles.superposition}></div>
                     </div>
-                    <div className='MainContent__Section MainContent__Section--Third SecondSection'>
+
+                    <div className={`${styles.MainContent__Section} ${styles.MainContent__SectionThird} ${styles.SecondSection}`}>
                         <Rating rating={ratedMovies[randomNumbers[2]].vote_average} top={24} />
                         <picture>
-                            <img src={`${IMG_URL}original${ratedMovies[randomNumbers[2]].backdrop_path}`} alt={ratedMovies[randomNumbers[0]].title} className='MainContent__Image' />
+                            <img src={`${IMG_URL}original${ratedMovies[randomNumbers[2]].backdrop_path}`} alt={ratedMovies[randomNumbers[0]].title} className={styles.MainContent__Image} />
                         </picture>
                         <Link href={'/'} >{ratedMovies[randomNumbers[2]].title}</Link>
                         <p>{`${ratedMovies[randomNumbers[2]].release_date.split('-')[0]}, ${genresMap.get(ratedMovies[randomNumbers[1]].genre_ids[0])}`}</p>
-                        <div className='superposition'></div>
+                        <div className={styles.superposition}></div>
                     </div>
                 </>
                 ) : (

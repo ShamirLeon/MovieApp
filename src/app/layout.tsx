@@ -1,4 +1,4 @@
-import './globals.scss'
+import '../Styles/globals.scss'
 import type { Metadata } from 'next'
 import { Figtree } from 'next/font/google'
 

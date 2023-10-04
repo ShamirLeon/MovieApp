@@ -1,4 +1,4 @@
-import styles from './Rating.module.scss'
+import styles from '@/styles/components/Rating.module.scss'
 
 interface Props {
     rating: number,

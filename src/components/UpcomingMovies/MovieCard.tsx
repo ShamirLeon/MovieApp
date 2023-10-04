@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import styles from './UpcomingMovies.module.scss';
+import styles from '@/styles/components/UpcomingMovies.module.scss';
 
 import { IResult } from '@/Interfaces/Movies.interface';
 

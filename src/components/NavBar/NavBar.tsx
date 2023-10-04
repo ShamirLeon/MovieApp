@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-// import styles from './NavBar.scss'
+import styles from '@/styles/components/NavBar.module.scss'
 
 const links = [{
     label: 'Home',
@@ -35,13 +35,13 @@ const imageStyle = {
 
 export default function NavBar() {
     return (
-        <nav className='NavBar'>
+        <nav className={styles.NavBar}>
             <Link href={links[0].route}>{links[0].label}</Link>
             <ul>
                 {
                     links.map(({ label, route }) => (
                         <Link href={route} key={label}>
-                            <li className='NavBar__Li'>
+                            <li className={styles.NavBar__Li}>
                                 {label}
                             </li>
                         </Link>

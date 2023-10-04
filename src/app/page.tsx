@@ -1,5 +1,5 @@
 import MovieProvider from '@/Context/MoviesProvider'
-import styles from './page.module.scss'
+import styles from '../Styles/page.module.scss'
 import MainContent from '@/components/MainContent/MainContent'
 import UpcomingMovies from '@/components/UpcomingMovies/UpcomingMovies'
 
