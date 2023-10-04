@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '@/styles/components/MainContent.module.scss'
+import styles from '@/Styles/components/MainContent.module.scss'
 
 import Link from 'next/link'
 import Rating from '../Rating/Rating';

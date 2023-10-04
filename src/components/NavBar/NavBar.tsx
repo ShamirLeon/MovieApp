@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import styles from '@/styles/components/NavBar.module.scss'
+import styles from '@/Styles/components/NavBar.module.scss'
 
 const links = [{
     label: 'Home',
