@@ -11,7 +11,8 @@ import { IMoviesApp, IResult, IMovieResult } from '@/Interfaces/Movies.interface
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
 
-const getTopRatedMovies = async () => {
+export default function MainContent() {
+    
 
     let randomNumber: number;
     while (true) {
