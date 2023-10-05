@@ -1,0 +1,43 @@
+.UpcomingContainer{
+    padding: 40px;
+}
+
+.MoviesContainer{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 0;
+}
+
+.MovieCard{
+    position: relative;
+    aspect-ratio: 16/9;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    // gap: 8px;
+
+    &__Image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+
+        mask-image: var(--Mask-Filter);
+    }
+
+    & a{
+        color: var(--White);
+        font-size: 20px;
+        text-decoration: none;
+        font-weight: 400;
+    }
+    
+    & p{
+       font-size: 14px;
+        font-weight: 300;
+    }
+}
