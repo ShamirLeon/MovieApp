@@ -13,6 +13,7 @@ const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
 
 export default function MainContent() {
+    
 
     const [ratedMovies, setRatedMovies] = useState<IResult[]>([]);
     const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
