@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <main className={styles.Main}>
       <MovieProvider>
-        <MainContent />
-        <UpcomingMovies />
+        <MainContent /> 
+        <UpcomingMovies /> 
       </MovieProvider>
     </main>
   )

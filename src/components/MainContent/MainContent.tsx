@@ -37,8 +37,7 @@ export default function MainContent() {
           headers: {
             accept: "application/json",
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
-          },
-          cache: "no-store",
+          }
         }
       );
 
