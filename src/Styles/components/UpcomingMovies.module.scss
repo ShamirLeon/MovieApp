@@ -26,7 +26,8 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 16px;
-    // gap: 8px;
+    text-decoration: none;
+    color: var(--White);
 
     &__Image{
         position: absolute;
@@ -54,16 +55,15 @@
 
 .BtnControl{
     position: absolute;
-    // top: 80px;
     bottom: 56px;
     border: none;
     width: 50px;
     height: 168px;
-    background-color: rgba(#11181D,.8);
-    backdrop-filter: blur(4px);
+    background-color: transparent;
+    // backdrop-filter: blur(4px);
     font-size: 1.2rem;
     color: var(--White);
-    mask-image: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(17,24,29,1) 100%);
+    // mask-image: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(17,24,29,1) 100%);
 
     cursor: pointer;
 }

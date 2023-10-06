@@ -6,9 +6,10 @@ import styles from '@/Styles/components/UpcomingMovies.module.scss'
 import { IResult, IMoviesApp } from '@/Interfaces/Movies.interface';
 import { useState, useEffect } from 'react';
 
+import { optionFecthMovieApi } from '@/API_CONFIG';
 
 export default function UpcomingMovies() {
-    let container: any;
+
     const [UpcomingMovies, setUpcomingMovies] = useState<IMoviesApp | null>();
 
     const getMoviesContainer = () => {
@@ -39,13 +40,7 @@ export default function UpcomingMovies() {
             }
         }
 
-        const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${randomNumber}`, {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
-            },
-        });
+        const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${randomNumber}`, optionFecthMovieApi);
 
         if (!res.ok) {
             throw new Error('Failed to fetch Upcoming Movies')
