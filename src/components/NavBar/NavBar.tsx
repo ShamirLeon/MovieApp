@@ -6,27 +6,27 @@ import styles from '@/Styles/components/NavBar.module.scss'
 const links = [{
     label: 'Home',
     route: '/',
-    icon: ''
+    icon: 'fi fi-rr-home'
 },
 {
     label: 'Search',
     route: '/search',
-    icon: ''
+    icon: 'fi fi-rs-search'
 },
 {
     label: 'Favourites',
     route: '/favourites',
-    icon: ''
+    icon: 'fi fi-rr-heart'
 },
 {
     label: 'Series',
     route: '/series',
-    icon: ''
+    icon: 'fi fi-rr-screen'
 },
 {
     label: 'Profile',
     route: '/profile',
-    icon: ''
+    icon: 'fi fi-rs-user'
 }]
 
 const imageStyle = {
@@ -39,9 +39,10 @@ export default function NavBar() {
             <Link href={links[0].route}>{links[0].label}</Link>
             <ul>
                 {
-                    links.map(({ label, route }) => (
+                    links.map(({ label, route, icon }) => (
                         <Link href={route} key={label}>
                             <li className={styles.NavBar__Li}>
+                                <i className={icon}></i>
                                 {label}
                             </li>
                         </Link>

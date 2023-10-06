@@ -30,7 +30,7 @@
         left: 0;
         bottom: 0;
 
-        mask-image: linear-gradient(to top, transparent, var(--Body-bg));
+        mask-image: var(--Mask-Filter);
         transition: all .5s ease-in-out;
     }
 

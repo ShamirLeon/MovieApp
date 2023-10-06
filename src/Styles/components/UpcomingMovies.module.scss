@@ -1,18 +1,27 @@
 .UpcomingContainer{
+    position: relative;
     padding: 40px;
 }
 
 .MoviesContainer{
     display: flex;
+    position: relative;
     justify-content: space-between;
     gap: 24px;
     padding: 16px 0;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    
+    &::-webkit-scrollbar{
+        width: 0px;
+        height: 0px;
+    }
 }
-
 .MovieCard{
     position: relative;
     aspect-ratio: 16/9;
-    width: 100%;
+    width: 300px;
+    height: 168px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -26,6 +35,7 @@
         width: 100%;
         z-index: -1;
 
+        -webkit-mask-image: var(--Mask-Filter);
         mask-image: var(--Mask-Filter);
     }
 
@@ -40,4 +50,24 @@
        font-size: 14px;
         font-weight: 300;
     }
+}
+
+.BtnControl{
+    position: absolute;
+    // top: 80px;
+    bottom: 56px;
+    border: none;
+    width: 50px;
+    height: 168px;
+    background-color: rgba(#11181D,.8);
+    backdrop-filter: blur(4px);
+    font-size: 1.2rem;
+    color: var(--White);
+    mask-image: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(17,24,29,1) 100%);
+
+    cursor: pointer;
+}
+
+#right_button{
+    right: 40px;
 }

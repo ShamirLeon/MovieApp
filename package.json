@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^2.4.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"

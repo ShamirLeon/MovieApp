@@ -24,6 +24,14 @@
     }
 
     &__Li{
+        display: flex;
+        gap: 8px;
+        align-items: center;
         list-style: none;
-    }
+        transition: color .3s ease-in-out;
+
+        &:hover{
+            color: var(--Accent-Blue);
+        }
+    }   
 }

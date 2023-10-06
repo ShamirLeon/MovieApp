@@ -90,7 +90,7 @@ export default function MainContent() {
                 className={styles.MainContent__Image}
               />
             </picture>
-            <Link href={"/"}>{results?.title}</Link>
+            <Link href={"/"}>{results[randomNumbers[0]]?.title}</Link>
             <p>{results[randomNumbers[0]]?.overview}</p>
             <div className={styles.MainContent__Categories}>
               {results[randomNumbers[0]]?.genre_ids?.map(

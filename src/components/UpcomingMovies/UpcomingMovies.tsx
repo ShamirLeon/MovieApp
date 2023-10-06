@@ -7,9 +7,28 @@ import { IResult, IMoviesApp } from '@/Interfaces/Movies.interface';
 import { useState, useEffect } from 'react';
 
 
-export default async function UpcomingMovies() {
+export default function UpcomingMovies() {
+    let container: any;
+    const [UpcomingMovies, setUpcomingMovies] = useState<IMoviesApp | null>();
 
-    const [UpcomingMovies, setUpcomingMovies] = useState<IMoviesApp | null >()
+    const getMoviesContainer = () => {
+        const moviesContainer = document.getElementById('MovieContainer');
+        return moviesContainer
+    }
+
+    let scrollLeft = 0;
+
+    function scrollMoviesContainer(direction: string): void {
+        const moviesContainer = getMoviesContainer();
+        direction == 'left' ? scrollLeft -= 300 : scrollLeft += 300;
+        if (scrollLeft < 0) {
+            scrollLeft = 0;
+        }
+
+        moviesContainer?.scrollTo({
+            left: scrollLeft,
+        })
+    }
 
     async function getUpcomingMovies() {
         let randomNumber;
@@ -19,7 +38,7 @@ export default async function UpcomingMovies() {
                 break;
             }
         }
-    
+
         const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${randomNumber}`, {
             method: 'GET',
             headers: {
@@ -27,30 +46,36 @@ export default async function UpcomingMovies() {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
             },
         });
-    
+
         if (!res.ok) {
             throw new Error('Failed to fetch Upcoming Movies')
         }
 
         const results = await res.json();
-    
+
         setUpcomingMovies(results)
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         getUpcomingMovies();
-    },[])
+    }, [])
 
     return (
         <section className={styles.UpcomingContainer}>
             <h2>Upcoming</h2>
-            <div className={styles.MoviesContainer}>
+            <div id='MovieContainer' className={styles.MoviesContainer}>
                 {
-                   UpcomingMovies?.results && UpcomingMovies.results.map((movie: IResult) => (
+                    UpcomingMovies?.results && UpcomingMovies.results.map((movie: IResult) => (
                         <MovieCard key={movie.id} movie={movie} />
                     ))
                 }
             </div>
+            <button id={styles.right_button} className={styles.BtnControl} onClick={() => { scrollMoviesContainer('right') }}>
+                <i className="fi fi-sr-angle-right"></i>
+            </button>
+            <button id='left_button' className={styles.BtnControl} onClick={() => { scrollMoviesContainer('left') }}>
+                <i className="fi fi-sr-angle-left"></i>
+            </button>
         </section>
     )
 }

@@ -35,13 +35,39 @@ export default function MovieProvider({
     };
 
     const genresMap = new Map();
-    genres.forEach((genre:IGenre)=>{
+    genres.forEach((genre: IGenre) => {
         genresMap.set(genre.id, genre.name)
     })
 
     useEffect(() => {
         getGenres();
     }, [])
+
+    /* Upcoming movies section -> scroll controls  */
+    // const containerMovies = document.querySelector('.MoviesContainer');
+    // const rightBtn = document.getElementById('right_button');
+    // const leftBtn = document.getElementById('left_button');
+
+    // console.log(Document);
+
+    let scrollLeft = 0;
+
+    // leftBtn?.addEventListener('click', () => {
+    //     scrollLeft -= 50;
+    //     containerMovies?.scrollTo({
+    //         left: scrollLeft,
+    //         behavior: 'smooth'
+    //     })
+    // });
+
+    // rightBtn?.addEventListener('click', () => {
+    //     scrollLeft += 50;
+    //     containerMovies?.scrollTo({
+    //         left: scrollLeft,
+    //         behavior: 'smooth'
+    //     })
+    // })
+
 
     return (
         <MovieContext.Provider value={{

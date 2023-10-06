@@ -1,3 +1,5 @@
+@import "~@flaticon/flaticon-uicons/css/all/all";
+
 *{
   margin: 0;
   padding: 0;
@@ -17,6 +19,7 @@
 
   /* Effects */
   --Backdrop-Filter: 32px; 
+  --Mask-Filter: linear-gradient(to top, transparent, var(--Body-bg));
   
   /* Layout */
   --Nav-Width: 200px;
@@ -26,14 +29,3 @@ body{
   color: var(--White);
   background-color: var(--Body-bg)
 }
-
-// /* Components */
-
-// //Ligth
-// @import '../components/Ligth/ligth';
-
-// // NavBar
-// @import '../components/NavBar/NavBar';
-
-// // MainContent
-// @import '../components/MainContent/mainContent'
