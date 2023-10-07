@@ -1,9 +1,11 @@
 'use client'
 
+import Link from 'next/link';
+import { useState, useContext } from 'react';
+
 import styles from '@/Styles/components/AlsoLike.module.scss';
 
 import { IRecomResult } from '@/Interfaces/Movies.interface';
-import { useState, useContext } from 'react';
 
 import Rating from '../Rating/Rating';
 
@@ -38,7 +40,9 @@ export default function AlsoLike({ movies }: Props) {
                                 <h2>You might also like</h2>
                                 <div className={styles.AlsoLike_Container}>
                                     <picture>
-                                        <img src={`${IMG_URL}original${filteredRecoms[index].poster_path}`} alt="" />
+                                        <Link href={`/movie/${filteredRecoms[index].id}`}>
+                                            <img src={`${IMG_URL}original${filteredRecoms[index].poster_path}`} alt="" />
+                                        </Link>
                                     </picture>
 
                                     <div className={styles.AlsoLike_Texts}>

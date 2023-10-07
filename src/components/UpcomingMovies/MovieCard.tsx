@@ -20,7 +20,7 @@ export default function MovieCard(movie: Props) {
     const {genresMap}:any = useContext(MovieContext)
 
     return (
-        <Link href={`/${id}`} key={id} className={styles.MovieCard}>
+        <Link href={`/movie/${id}`} key={id} className={styles.MovieCard}>
             <img src={`${IMG_URL}original${backdrop_path}`} alt={title} className={styles.MovieCard__Image} />
             <Link href={'/'} >{title}</Link>
             <p>{`${release_date.split('-')[0]}, ${genresMap.get(genre_ids[0])}`}</p>

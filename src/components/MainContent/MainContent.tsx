@@ -71,7 +71,7 @@ export default function MainContent() {
       {loading && <p>Loading...</p>}
       {!loading && results && (
         <div className={styles.MainContent}>
-          <Link href={`/${results[randomNumbers[0]]?.id}`}
+          <Link href={`/movie/${results[randomNumbers[0]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionFirst}`}
           >
             <Rating
@@ -99,7 +99,7 @@ export default function MainContent() {
             <div className={styles.superposition}></div>
           </Link>
 
-          <Link href={`/${results[randomNumbers[1]]?.id}`}
+          <Link href={`/movie/${results[randomNumbers[1]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionSecond} ${styles.SecondSection}`}
           >
             <Rating rating={results[randomNumbers[1]]?.vote_average} top={24} position='absolute'/>
@@ -115,7 +115,7 @@ export default function MainContent() {
             <div className={styles.superposition}></div>
           </Link>
 
-          <Link href={`/${results[randomNumbers[2]]?.id}`}
+          <Link href={`/movie/${results[randomNumbers[2]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionThird} ${styles.SecondSection}`}
           >
             <Rating rating={results[randomNumbers[2]]?.vote_average} top={24} position='absolute'/>
