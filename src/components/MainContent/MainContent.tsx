@@ -8,6 +8,7 @@ import styles from "@/Styles/components/MainContent.module.scss";
 import { MovieContext } from "@/Context/MoviesContext";
 
 import { optionFecthMovieApi } from "@/API_CONFIG";
+import Category from "../Category/Category";
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
@@ -76,6 +77,7 @@ export default function MainContent() {
             <Rating
               rating={results[randomNumbers[0]]?.vote_average}
               top={40}
+              position='absolute'
             />
             <picture>
               <img
@@ -90,7 +92,7 @@ export default function MainContent() {
             <div className={styles.MainContent__Categories}>
               {results[randomNumbers[0]]?.genre_ids?.map(
                 (genre: number) => (
-                  <span key={genre}>{genresMap.get(genre)}</span>
+                  <Category key={genre} text={genresMap.get(genre)}/>
                 )
               )}
             </div>
@@ -100,7 +102,7 @@ export default function MainContent() {
           <Link href={`/${results[randomNumbers[1]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionSecond} ${styles.SecondSection}`}
           >
-            <Rating rating={results[randomNumbers[1]]?.vote_average} top={24} />
+            <Rating rating={results[randomNumbers[1]]?.vote_average} top={24} position='absolute'/>
             <picture>
               <img
                 src={`${IMG_URL}original${results[randomNumbers[1]]?.backdrop_path}`}
@@ -116,7 +118,7 @@ export default function MainContent() {
           <Link href={`/${results[randomNumbers[2]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionThird} ${styles.SecondSection}`}
           >
-            <Rating rating={results[randomNumbers[2]]?.vote_average} top={24} />
+            <Rating rating={results[randomNumbers[2]]?.vote_average} top={24} position='absolute'/>
             <picture>
               <img
                 src={`${IMG_URL}original${results[randomNumbers[2]]?.backdrop_path}`}

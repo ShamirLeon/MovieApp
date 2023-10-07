@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={figtree.className}>
         <NavBar />
-        <Ligth id={1}/> 
+        <Ligth left={-150} top={-150}/> 
         {/* <Ligth id={2}/> */}
         {children}
       </body>

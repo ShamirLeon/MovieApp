@@ -1,11 +1,12 @@
 import styles from '@/Styles/components/Ligth.module.scss'
 
-interface Props{
-    id:number,
+interface Props {
+    top: number,
+    left: number
 }
 
-export default function Ligth({id}:Props) {
-    return(
-        <div id={`Ligth${id}`} className={styles.Ligth}></div>
+export default function Ligth({ left, top }: Props) {
+    return (
+        <div style={{top:`${top}px`, left:`${left}px`}} className={styles.Ligth}></div>
     )
 }
