@@ -5,6 +5,8 @@ import Rating from "@/components/Rating/Rating";
 
 import styles from "@/Styles/movieDetails.module.scss";
 import Category from "@/components/Category/Category";
+import AlsoLike from "@/components/AlsoLike/AlsoLike";
+import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
 
 async function getMovieDetails(id: number) {
     try {
@@ -57,7 +59,10 @@ export default async function MovieDetaisPage({ params }: any) {
     const filteredCast = movieCredits.cast.filter((cast) => {
         return cast.profile_path !== null;
     });
-    const rec = movieRecommendations.results[0];
+
+    const filteredRecoms = movieRecommendations.results.filter((movie)=>{
+        return movie.poster_path !== null; 
+    });
 
     return (
         <section className={styles.Details_Container}>
@@ -104,26 +109,7 @@ export default async function MovieDetaisPage({ params }: any) {
                         }
                     </div>
                 </div>
-                <div className={styles.AlsoLike}>
-                    <h2>You might also like</h2>
-                    <div className={styles.AlsoLike_Container}>
-                        <picture>
-                            <img src={`${IMG_URL}original${rec.poster_path}`} alt="" />
-                        </picture>
-
-                        <div className={styles.AlsoLike_Texts}>
-                            <h3>{rec.title}</h3>
-                            <div>
-                                <Rating rating={parseFloat(rec.vote_average.toFixed(1))} top={0} position='relative'></Rating>
-                                <div>
-                                    <p>{rec.release_date.split('-')[0]}</p>
-                                    <span>{rec.genre_ids[0]}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <AlsoLikeContainer movies={filteredRecoms.slice(0,3)}/>
             </div>
         </section>
     )

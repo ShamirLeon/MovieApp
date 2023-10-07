@@ -147,12 +147,12 @@ export interface Backdrop {
 /* Movies Recommendations Interfaces */
 export interface IMovieRecommendations {
     page:          number;
-    results:       Result[];
+    results:       IRecomResult[];
     total_pages:   number;
     total_results: number;
 }
 
-export interface Result {
+export interface IRecomResult {
     adult:             boolean;
     backdrop_path:     null | string;
     id:                number;
