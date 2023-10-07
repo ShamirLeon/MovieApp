@@ -9,7 +9,7 @@ import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
 
 async function getMovieDetails(id: number) {
     try {
-        const movieDetails = fetch(`https://api.themoviedb.org/3/movie/${id}`, {
+        const movieDetails = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -17,7 +17,7 @@ async function getMovieDetails(id: number) {
             },
             cache: 'no-store'
         }).then(res => res.json());
-        console.log(movieDetails);
+        console.log('MovieDetails', movieDetails);
         return movieDetails;
     } catch (error) {
         console.log(error);
@@ -25,7 +25,7 @@ async function getMovieDetails(id: number) {
 }
 async function getMovieCredits(id: number) {
     try {
-        const movieCredits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
+        const movieCredits = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -40,7 +40,7 @@ async function getMovieCredits(id: number) {
 }
 async function getMovieImages(id: number) {
     try {
-        const movieImages = fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
+        const movieImages = await fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -55,7 +55,7 @@ async function getMovieImages(id: number) {
 }
 async function getMovieRecommendations(id: number) {
     try {
-        const movieRecommendations = fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, {
+        const movieRecommendations = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, {
             method: "GET",
             headers: {
                 accept: "application/json",
