@@ -3,8 +3,8 @@ import { IMovieDetails, IMovieCredits, IMovieImages, IMovieRecommendations } fro
 import Rating from "@/components/Rating/Rating";
 
 import styles from "@/Styles/movieDetails.module.scss";
-import Category from "@/components/Category/Category";
 
+import Category from "@/components/Category/Category";
 import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
 
 async function getMovieDetails(id: number) {
@@ -17,6 +17,7 @@ async function getMovieDetails(id: number) {
             },
             cache: 'no-store'
         }).then(res => res.json());
+        console.log(movieDetails);
         return movieDetails;
     } catch (error) {
         console.log(error);
@@ -70,8 +71,8 @@ async function getMovieRecommendations(id: number) {
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
-export default async function MovieDetaisPage({ params }: any) {
-    const { movieID } = params;
+export default async function MovieDetailsPage({ params }: any) {
+    const { movieID } = await params;
     const movieDetails: IMovieDetails = await getMovieDetails(movieID);
     const movieCredits: IMovieCredits = await getMovieCredits(movieID);
     const movieImages: IMovieImages = await getMovieImages(movieID);
