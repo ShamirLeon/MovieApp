@@ -7,9 +7,9 @@ import styles from "@/Styles/movieDetails.module.scss";
 import Category from "@/components/Category/Category";
 import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
 
-async function getMovieDetails(id: number) {
+function getMovieDetails(id: number) {
     try {
-        const movieDetails = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
+        const movieDetails = fetch(`https://api.themoviedb.org/3/movie/${id}`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -23,9 +23,9 @@ async function getMovieDetails(id: number) {
         console.log(error);
     }
 }
-async function getMovieCredits(id: number) {
+function getMovieCredits(id: number) {
     try {
-        const movieCredits = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
+        const movieCredits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -38,9 +38,9 @@ async function getMovieCredits(id: number) {
         console.log(error);
     }
 }
-async function getMovieImages(id: number) {
+function getMovieImages(id: number) {
     try {
-        const movieImages = await fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
+        const movieImages = fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -53,9 +53,9 @@ async function getMovieImages(id: number) {
         console.log(error);
     }
 }
-async function getMovieRecommendations(id: number) {
+function getMovieRecommendations(id: number) {
     try {
-        const movieRecommendations = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, {
+        const movieRecommendations = fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, {
             method: "GET",
             headers: {
                 accept: "application/json",
@@ -72,7 +72,7 @@ async function getMovieRecommendations(id: number) {
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
 export default async function MovieDetailsPage({ params }: any) {
-    const { movieID } = await params;
+    const { movieID } = params;
     const movieDetails: IMovieDetails = await getMovieDetails(movieID);
     const movieCredits: IMovieCredits = await getMovieCredits(movieID);
     const movieImages: IMovieImages = await getMovieImages(movieID);
