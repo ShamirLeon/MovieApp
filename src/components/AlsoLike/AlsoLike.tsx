@@ -11,12 +11,16 @@ import { MovieContext } from '@/Context/MoviesContext';
 import MovieProvider from '@/Context/MoviesProvider';
 
 interface Props {
-    movies: IRecomResult[]
+    movies: IRecomResult[];
 }
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
 export default function AlsoLike({ movies }: Props) {
+
+    const filteredRecoms = movies.filter((movie) => {
+        return movie.poster_path !== null;
+    });
 
     const [index, setIndex] = useState<number>(0);
 
@@ -25,41 +29,50 @@ export default function AlsoLike({ movies }: Props) {
     return (
         <div className={styles.AlsoLike}>
             <MovieProvider>
-                <h2>You might also like</h2>
-                <div className={styles.AlsoLike_Container}>
-                    <picture>
-                        <img src={`${IMG_URL}original${movies[index].poster_path}`} alt="" />
-                    </picture>
+                {
+                    movies.length == 0 ?
+                        (
+                            <h2>No recommendations found</h2>
+                        ) : (
+                            <>
+                                <h2>You might also like</h2>
+                                <div className={styles.AlsoLike_Container}>
+                                    <picture>
+                                        <img src={`${IMG_URL}original${filteredRecoms[index].poster_path}`} alt="" />
+                                    </picture>
 
-                    <div className={styles.AlsoLike_Texts}>
-                        <h3>{movies[index].title}</h3>
-                        <div>
-                            <Rating rating={parseFloat(movies[index].vote_average.toFixed(1))} top={0} position='relative'></Rating>
-                            <div>
-                                <p>{movies[index].release_date.split('-')[0]}</p>
-                                <span>{genresMap.get(movies[index].genre_ids[0])}</span>
-                            </div>
-                            <div className={styles.InputsContainer}>
-                                {
-                                    movies.map((movie, _index) => (
-                                        <label className={styles.Radio_btn} key={movie.id}>
-                                            <input
-                                                type="radio"
-                                                name="Movie"
-                                                onClick={() => {
-                                                    setIndex(_index);
-                                                }}
-                                            />
-                                            <span
-                                                className={`${styles.Checkmark} ${_index === index ? `${styles.Show}` : ""}`}
-                                            ></span>
-                                        </label>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    <div className={styles.AlsoLike_Texts}>
+                                        <h3>{filteredRecoms[index].title}</h3>
+                                        <div>
+                                            <Rating rating={parseFloat(filteredRecoms[index].vote_average.toFixed(1))} top={0} position='relative'></Rating>
+                                            <div>
+                                                <p>{filteredRecoms[index].release_date.split('-')[0]}</p>
+                                                <span>{genresMap.get(filteredRecoms[index].genre_ids[0])}</span>
+                                            </div>
+                                            <div className={styles.InputsContainer}>
+                                                {
+                                                    filteredRecoms.slice(0, 3).map((movie, _index) => (
+                                                        <label className={styles.Radio_btn} key={movie.id}>
+                                                            <input
+                                                                type="radio"
+                                                                name="Movie"
+                                                                onClick={() => {
+                                                                    setIndex(_index);
+                                                                }}
+                                                            />
+                                                            <span
+                                                                className={`${styles.Checkmark} ${_index === index ? `${styles.Show}` : ""}`}
+                                                            ></span>
+                                                        </label>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )
+                }
             </MovieProvider>
         </div>
     )

@@ -1,16 +1,16 @@
 import MovieProvider from "@/Context/MoviesProvider";
 import AlsoLike from "./AlsoLike";
-import { IRecomResult } from "@/Interfaces/Movies.interface";
+import { IMovieRecommendations } from "@/Interfaces/Movies.interface";
 
 interface Props {
-    movies: IRecomResult[]
+    movies: IMovieRecommendations;
 }
 
 export default function AlsoLikeContainer({movies}:Props) {
     return (
         <>
             <MovieProvider>
-                <AlsoLike movies={movies}/>
+                <AlsoLike movies={movies.results}/>
             </MovieProvider>
         </>
     )

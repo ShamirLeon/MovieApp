@@ -10,7 +10,7 @@ import { optionFecthMovieApi } from '@/API_CONFIG';
 
 export default function UpcomingMovies() {
 
-    const [UpcomingMovies, setUpcomingMovies] = useState<IMoviesApp | null>();
+    const [UpcomingMovies, setUpcomingMovies] = useState<IResult[] | null>();
 
     const getMoviesContainer = () => {
         const moviesContainer = document.getElementById('MovieContainer');
@@ -48,7 +48,11 @@ export default function UpcomingMovies() {
 
         const results = await res.json();
 
-        setUpcomingMovies(results)
+        const filteredResults = await results.results.filter((result:any)=>{
+            return result.backdrop_path !== null;
+        })
+
+        setUpcomingMovies(filteredResults)
     };
 
     useEffect(() => {
@@ -60,7 +64,7 @@ export default function UpcomingMovies() {
             <h2>Upcoming</h2>
             <div id='MovieContainer' className={styles.MoviesContainer}>
                 {
-                    UpcomingMovies?.results && UpcomingMovies.results.map((movie: IResult) => (
+                    UpcomingMovies && UpcomingMovies.map((movie: IResult) => (
                         <MovieCard key={movie.id} movie={movie} />
                     ))
                 }

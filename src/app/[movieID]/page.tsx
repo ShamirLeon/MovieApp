@@ -1,16 +1,22 @@
-import { optionFecthMovieApi } from "@/API_CONFIG";
 import { IMovieDetails, IMovieCredits, IMovieImages, IMovieRecommendations } from "@/Interfaces/Movies.interface";
 
 import Rating from "@/components/Rating/Rating";
 
 import styles from "@/Styles/movieDetails.module.scss";
 import Category from "@/components/Category/Category";
-import AlsoLike from "@/components/AlsoLike/AlsoLike";
+
 import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
 
 async function getMovieDetails(id: number) {
     try {
-        const movieDetails = fetch(`https://api.themoviedb.org/3/movie/${id}`, optionFecthMovieApi).then(res => res.json());
+        const movieDetails = fetch(`https://api.themoviedb.org/3/movie/${id}`, {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
+            },
+            cache: 'no-store'
+        }).then(res => res.json());
         return movieDetails;
     } catch (error) {
         console.log(error);
@@ -18,7 +24,14 @@ async function getMovieDetails(id: number) {
 }
 async function getMovieCredits(id: number) {
     try {
-        const movieCredits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, optionFecthMovieApi).then(res => res.json());
+        const movieCredits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
+            },
+            cache: 'no-store'
+        }).then(res => res.json());
         return movieCredits;
     } catch (error) {
         console.log(error);
@@ -26,7 +39,14 @@ async function getMovieCredits(id: number) {
 }
 async function getMovieImages(id: number) {
     try {
-        const movieImages = fetch(`https://api.themoviedb.org/3/movie/${id}/images`, optionFecthMovieApi).then(res => res.json());
+        const movieImages = fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
+            },
+            cache: 'no-store'
+        }).then(res => res.json());
         return movieImages;
     } catch (error) {
         console.log(error);
@@ -34,7 +54,14 @@ async function getMovieImages(id: number) {
 }
 async function getMovieRecommendations(id: number) {
     try {
-        const movieRecommendations = fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, optionFecthMovieApi).then(res => res.json());
+        const movieRecommendations = fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
+            },
+            cache: 'no-store'
+        }).then(res => res.json());
         return movieRecommendations;
     } catch (error) {
         console.log(error);
@@ -58,10 +85,6 @@ export default async function MovieDetaisPage({ params }: any) {
 
     const filteredCast = movieCredits.cast.filter((cast) => {
         return cast.profile_path !== null;
-    });
-
-    const filteredRecoms = movieRecommendations.results.filter((movie)=>{
-        return movie.poster_path !== null; 
     });
 
     return (
@@ -109,7 +132,7 @@ export default async function MovieDetaisPage({ params }: any) {
                         }
                     </div>
                 </div>
-                <AlsoLikeContainer movies={filteredRecoms.slice(0,3)}/>
+                <AlsoLikeContainer movies={movieRecommendations} />
             </div>
         </section>
     )
