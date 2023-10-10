@@ -33,6 +33,7 @@ export default function MovieDetailsPage({ params }: any) {
         }
 
         const results = await res.json();
+        console.log('movie details =>', results);
         setMovieDetails(results);
         setLoading(false);
     }
@@ -45,6 +46,7 @@ export default function MovieDetailsPage({ params }: any) {
             }
 
             const results = await res.json();
+            console.log('movie credits =>',results);
             setMovieCredits(results)
         } catch (error) {
             console.log(error);
@@ -59,6 +61,7 @@ export default function MovieDetailsPage({ params }: any) {
             }
 
             const results = await res.json();
+            console.log('movie images =>', results);
             setMovieImages(results)
 
         } catch (error) {
@@ -74,6 +77,7 @@ export default function MovieDetailsPage({ params }: any) {
             }
 
             const results = await res.json();
+            console.log('movie recommendations =>', results);
 
             setMovieRecommendations(results)
         } catch (error) {
@@ -122,7 +126,7 @@ export default function MovieDetailsPage({ params }: any) {
                                     {
                                         filteredCast?.slice(0, 5).map((cast, index) => (
                                             <picture key={cast.id}>
-                                                <img style={{ marginLeft: `${index == 0 ? '0px' : '-8px'}`, zIndex: `${5 - index}` }} src={`${IMG_URL}original${cast.profile_path!}`} alt={cast.name} />
+                                                <img style={{ marginLeft: ` ${index == 0 ? '0px' : '-8px'}`, zIndex: `${5 - index}` }} src={`${IMG_URL}original${cast.profile_path!}`} alt={cast.name} />
                                             </picture>
                                         ))
                                     }
