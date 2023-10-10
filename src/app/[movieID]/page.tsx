@@ -72,6 +72,7 @@ const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
 export default async function MovieDetaisPage({ params }: any) {
     const { movieID } = params;
+    
     const movieDetails: IMovieDetails = await getMovieDetails(movieID);
     const movieCredits: IMovieCredits = await getMovieCredits(movieID);
     const movieImages: IMovieImages = await getMovieImages(movieID);
