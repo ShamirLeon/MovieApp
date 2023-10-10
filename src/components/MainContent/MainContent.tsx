@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import styles from "@/Styles/components/MainContent.module.scss";
 import { MovieContext } from "@/Context/MoviesContext";
 
-import { optionFecthMovieApi } from "@/API_CONFIG";
+import { Axios } from "@/API_CONFIG";
 import Category from "../Category/Category";
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
@@ -18,7 +18,6 @@ export default function MainContent() {
   const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
   let randomNumbersArray: number[] = [];
   const { results } = resultsTopMovies;
-  let response: any;
 
   const { genresMap }: any = useContext(MovieContext);
 
@@ -31,18 +30,11 @@ export default function MainContent() {
         break;
       }
     }
+
     try {
       setLoading(true);
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${randomNumber}`,
-        optionFecthMovieApi
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to fetch Upcoming Movies");
-      }
-      response = await res.json();
-      setResultsTopMovies(response);
+      const response = await Axios.get(`movie/top_rated?language=en-US&page=${randomNumber}`)
+      setResultsTopMovies(response.data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -71,7 +63,7 @@ export default function MainContent() {
       {loading && <p>Loading...</p>}
       {!loading && results && (
         <div className={styles.MainContent}>
-          <Link href={`/movie/${results[randomNumbers[0]]?.id}`}
+          <Link href={`/${results[randomNumbers[0]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionFirst}`}
           >
             <Rating
@@ -92,17 +84,17 @@ export default function MainContent() {
             <div className={styles.MainContent__Categories}>
               {results[randomNumbers[0]]?.genre_ids?.map(
                 (genre: number) => (
-                  <Category key={genre} text={genresMap.get(genre)}/>
+                  <Category key={genre} text={genresMap.get(genre)} />
                 )
               )}
             </div>
             <div className={styles.superposition}></div>
           </Link>
 
-          <Link href={`/movie/${results[randomNumbers[1]]?.id}`}
+          <Link href={`/${results[randomNumbers[1]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionSecond} ${styles.SecondSection}`}
           >
-            <Rating rating={results[randomNumbers[1]]?.vote_average} top={24} position='absolute'/>
+            <Rating rating={results[randomNumbers[1]]?.vote_average} top={24} position='absolute' />
             <picture>
               <img
                 src={`${IMG_URL}original${results[randomNumbers[1]]?.backdrop_path}`}
@@ -115,10 +107,10 @@ export default function MainContent() {
             <div className={styles.superposition}></div>
           </Link>
 
-          <Link href={`/movie/${results[randomNumbers[2]]?.id}`}
+          <Link href={`/${results[randomNumbers[2]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionThird} ${styles.SecondSection}`}
           >
-            <Rating rating={results[randomNumbers[2]]?.vote_average} top={24} position='absolute'/>
+            <Rating rating={results[randomNumbers[2]]?.vote_average} top={24} position='absolute' />
             <picture>
               <img
                 src={`${IMG_URL}original${results[randomNumbers[2]]?.backdrop_path}`}

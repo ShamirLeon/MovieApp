@@ -6,7 +6,7 @@ import styles from '@/Styles/components/UpcomingMovies.module.scss'
 import { IResult, IMoviesApp } from '@/Interfaces/Movies.interface';
 import { useState, useEffect } from 'react';
 
-import { optionFecthMovieApi } from '@/API_CONFIG';
+import { Axios } from '@/API_CONFIG';
 
 export default function UpcomingMovies() {
 
@@ -40,15 +40,9 @@ export default function UpcomingMovies() {
             }
         }
 
-        const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${randomNumber}`, optionFecthMovieApi);
+        const response = await Axios.get(`/movie/upcoming?language=en-US&page=${randomNumber}`)
 
-        if (!res.ok) {
-            throw new Error('Failed to fetch Upcoming Movies')
-        }
-
-        const results = await res.json();
-
-        const filteredResults = await results.results.filter((result:any)=>{
+        const filteredResults = await response.data.results.filter((result:any)=>{
             return result.backdrop_path !== null;
         })
 

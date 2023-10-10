@@ -6,63 +6,41 @@ import styles from "@/Styles/movieDetails.module.scss";
 import Category from "@/components/Category/Category";
 
 import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
+import { Axios, CustomAxiosRequestConfig } from "@/API_CONFIG";
+
+
+const options: CustomAxiosRequestConfig = {
+    cache: 'no-store'
+}
 
 async function getMovieDetails(id: number) {
     try {
-        const movieDetails = fetch(`https://api.themoviedb.org/3/movie/${id}`, {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
-            },
-            cache: 'no-store'
-        }).then(res => res.json());
-        return movieDetails;
+        const movieDetails = await Axios.get(`/movie/${id}`, options)
+        return movieDetails.data;
     } catch (error) {
         console.log(error);
     }
 }
 async function getMovieCredits(id: number) {
     try {
-        const movieCredits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
-            },
-            cache: 'no-store'
-        }).then(res => res.json());
-        return movieCredits;
+        const movieCredits = await Axios.get(`/movie/${id}/credits`, options)
+        return movieCredits.data;
     } catch (error) {
         console.log(error);
     }
 }
 async function getMovieImages(id: number) {
     try {
-        const movieImages = fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
-            },
-            cache: 'no-store'
-        }).then(res => res.json());
-        return movieImages;
+        const movieImages = await Axios.get(`/movie/${id}/images`, options)
+        return movieImages.data;
     } catch (error) {
         console.log(error);
     }
 }
 async function getMovieRecommendations(id: number) {
     try {
-        const movieRecommendations = fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`, {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_TMDB_API}`,
-            },
-            cache: 'no-store'
-        }).then(res => res.json());
-        return movieRecommendations;
+        const movieRecommendations = await Axios.get(`/movie/${id}/recommendations?page=1`, options);
+        return movieRecommendations.data;
     } catch (error) {
         console.log(error);
     }

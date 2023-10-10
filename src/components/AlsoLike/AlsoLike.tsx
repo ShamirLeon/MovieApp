@@ -10,7 +10,6 @@ import { IRecomResult } from '@/Interfaces/Movies.interface';
 import Rating from '../Rating/Rating';
 
 import { MovieContext } from '@/Context/MoviesContext';
-import MovieProvider from '@/Context/MoviesProvider';
 
 interface Props {
     movies: IRecomResult[];
@@ -30,7 +29,6 @@ export default function AlsoLike({ movies }: Props) {
 
     return (
         <div className={styles.AlsoLike}>
-            <MovieProvider>
                 {
                     movies.length == 0 ?
                         (
@@ -77,7 +75,6 @@ export default function AlsoLike({ movies }: Props) {
                             </>
                         )
                 }
-            </MovieProvider>
         </div>
     )
 }
