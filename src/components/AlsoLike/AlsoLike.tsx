@@ -9,6 +9,7 @@ import Rating from '../Rating/Rating';
 
 import { MovieContext } from '@/Context/MoviesContext';
 import MovieProvider from '@/Context/MoviesProvider';
+import Link from 'next/link';
 
 interface Props {
     movies: IRecomResult[];
@@ -38,7 +39,9 @@ export default function AlsoLike({ movies }: Props) {
                                 <h2>You might also like</h2>
                                 <div className={styles.AlsoLike_Container}>
                                     <picture>
-                                        <img src={`${IMG_URL}original${filteredRecoms[index].poster_path}`} alt="" />
+                                        <Link href={`/${filteredRecoms[index].id}`}>
+                                            <img src={`${IMG_URL}original${filteredRecoms[index].poster_path}`} alt="" />
+                                        </Link>
                                     </picture>
 
                                     <div className={styles.AlsoLike_Texts}>
