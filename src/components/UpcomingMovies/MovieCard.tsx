@@ -14,8 +14,8 @@ interface Props {
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
-export default function MovieCard(movie: Props) {
-    const { id, backdrop_path, title, release_date, genre_ids } = movie.movie;
+export default function MovieCard({ movie }: Props) {
+    const { id, backdrop_path, title, release_date, genre_ids } = movie;
 
     const {genresMap}:any = useContext(MovieContext)
 
