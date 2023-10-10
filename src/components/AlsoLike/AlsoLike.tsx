@@ -40,7 +40,7 @@ export default function AlsoLike({ movies }: Props) {
                                 <h2>You might also like</h2>
                                 <div className={styles.AlsoLike_Container}>
                                     <picture>
-                                        <Link href={`/movie/${filteredRecoms[index].id}`}>
+                                        <Link href={`/${filteredRecoms[index].id}`}>
                                             <img src={`${IMG_URL}original${filteredRecoms[index].poster_path}`} alt="" />
                                         </Link>
                                     </picture>
