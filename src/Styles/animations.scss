@@ -1,0 +1,37 @@
+@keyframes fadeUp {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes imgFadeIn {
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardIn {
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes categoriesIn {
+  100%{
+    gap: 16px;
+  }
+}
+
+@keyframes castImgSlideIn {
+  100%{
+    margin-right: -8px;
+    opacity: 1;
+  }
+}

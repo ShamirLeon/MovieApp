@@ -1,3 +1,22 @@
 .Main{
     margin-left: var(--Nav-Width);
 }
+
+@keyframes fadeUp {
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes imgFadeIn {
+    100%{
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeIn{
+    100%{
+      opacity: 1;
+    }
+  }

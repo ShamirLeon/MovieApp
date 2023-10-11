@@ -62,8 +62,8 @@ export default function UpcomingMovies() {
             <div id='MovieContainer' className={styles.MoviesContainer}>
                 {isLoading && <MovieCardSkeleton number={4} />}
                 {
-                    UpcomingMovies && UpcomingMovies.map((movie: IResult) => (
-                        <MovieCard key={movie.id} movie={movie} />
+                    UpcomingMovies && UpcomingMovies.map((movie: IResult, index) => (
+                        <MovieCard key={index} movie={movie} delay={400 + (index * 80)}/>
                     ))
                 }
             </div>

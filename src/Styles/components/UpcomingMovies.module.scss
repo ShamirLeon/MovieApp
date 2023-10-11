@@ -1,73 +1,91 @@
-.UpcomingContainer{
-    position: relative;
-    padding: 40px;
+@import '../animations.scss';
+
+.UpcomingContainer {
+  position: relative;
+  padding: 40px;
 }
 
-.MoviesContainer{
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 16px 0;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    
-    &::-webkit-scrollbar{
-        width: 0px;
-        height: 0px;
-    }
+.MoviesContainer {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
 }
-.MovieCard{
-    position: relative;
-    aspect-ratio: 16/9;
-    width: 300px;
-    height: 168px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 16px;
-    text-decoration: none;
-    color: var(--White);
+.MovieCard {
+  position: relative;
+  aspect-ratio: 16/9;
+  width: 300px;
+  height: 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--White);
 
-    &__Image{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: -1;
-
-        -webkit-mask-image: var(--Mask-Filter);
-        mask-image: var(--Mask-Filter);
-    }
-
-    & a{
-        color: var(--White);
-        font-size: 20px;
-        text-decoration: none;
-        font-weight: 400;
-    }
-    
-    & p{
-       font-size: 14px;
-        font-weight: 300;
-    }
-}
-
-.BtnControl{
+  &__Image {
     position: absolute;
-    bottom: 56px;
-    border: none;
-    width: 50px;
-    height: 168px;
-    background-color: transparent;
-    // backdrop-filter: blur(4px);
-    font-size: 1.2rem;
-    color: var(--White);
-    // mask-image: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(17,24,29,1) 100%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
 
-    cursor: pointer;
+    -webkit-mask-image: var(--Mask-Filter);
+    mask-image: var(--Mask-Filter);
+  }
+
+  & h2 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeUp 0.8s ease-in-out forwards;
+  }
+
+  & p {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeUp 0.8s ease-in-out forwards;
+  }
 }
 
-#right_button{
-    right: 40px;
+.BtnControl {
+  position: absolute;
+  bottom: 56px;
+  border: none;
+  width: 50px;
+  height: 168px;
+  background-color: transparent;
+  // backdrop-filter: blur(4px);
+  font-size: 1.2rem;
+  color: var(--White);
+  // mask-image: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(17,24,29,1) 100%);
+
+  cursor: pointer;
+}
+
+#right_button {
+  right: 40px;
+}
+
+.Mask {
+  position: absolute;
+  background-color: var(--Body-bg);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: scaleY(1);
+  transform-origin: top;
+
+  animation: cardIn 0.8s ease-in-out forwards;
 }

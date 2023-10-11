@@ -68,7 +68,7 @@ export default function MainContent() {
           >
             <Rating
               rating={results[randomNumbers[0]]?.vote_average}
-              top={40}
+              top={24}
               position='absolute'
             />
             <picture>
@@ -100,6 +100,7 @@ export default function MainContent() {
                 src={`${IMG_URL}original${results[randomNumbers[1]]?.backdrop_path}`}
                 alt={results[randomNumbers[1]]?.title}
                 className={styles.MainContent__Image}
+                style={{animationDelay:'.4s'}}
               />
             </picture>
             <h3 className={`${styles.MovieTitle}`}>{results[randomNumbers[1]]?.title}</h3>
@@ -116,6 +117,7 @@ export default function MainContent() {
                 src={`${IMG_URL}original${results[randomNumbers[2]]?.backdrop_path}`}
                 alt={results[randomNumbers[2]]?.title}
                 className={styles.MainContent__Image}
+                style={{animationDelay:'.6s'}}
               />
             </picture>
             <h3 className={`${styles.MovieTitle}`}>{results[randomNumbers[2]]?.title}</h3>

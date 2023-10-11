@@ -50,7 +50,7 @@ const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
 export default async function MovieDetaisPage({ params }: any) {
     const { movieID } = params;
-    
+
     const movieDetails: IMovieDetails = await getMovieDetails(movieID);
     const movieCredits: IMovieCredits = await getMovieCredits(movieID);
     const movieImages: IMovieImages = await getMovieImages(movieID);
@@ -74,7 +74,9 @@ export default async function MovieDetaisPage({ params }: any) {
                     <Rating rating={parseFloat(vote_average.toFixed(1))} top={40} />
                 </div>
                 <div className={styles.Texts_Container}>
-                    <h1 className="">{title}</h1>
+                    <div className={styles.TitleContainer}>
+                        <h1 className="">{title}</h1>
+                    </div>
                     <div className={styles.Categories}>
                         {
                             genres.map(genre => (
@@ -84,12 +86,14 @@ export default async function MovieDetaisPage({ params }: any) {
                     </div>
                     <p>{overview}</p>
                     <div className={styles.Cast}>
-                        <h2>Cast</h2>
+                        <div className={styles.TitleContainer}>
+                            <h2 style={{animationDelay:'.8s'}}>Cast</h2>
+                        </div>
                         <div className={styles.Cast_Images}>
                             {
                                 filteredCast.slice(0, 5).map((cast, index) => (
                                     <picture key={cast.id}>
-                                        <img style={{ marginLeft: `${index == 0 ? '0px' : '-8px'}`, zIndex: `${5 - index}` }} src={`${IMG_URL}original${cast.profile_path!}`} alt={cast.name} />
+                                        <img style={{ zIndex: `${5 - index}` }} src={`${IMG_URL}original${cast.profile_path!}`} alt={cast.name} />
                                     </picture>
                                 ))
                             }
@@ -106,6 +110,7 @@ export default async function MovieDetaisPage({ params }: any) {
                             filteredBackdrops.slice(1, 4).map((image, index) => (
                                 <picture key={index}>
                                     <img src={`${IMG_URL}original${image.file_path}`} alt="" />
+                                    <div className={styles.Mask} style={{ animationDelay: `${400 + (index * 50)}ms` }}></div>
                                 </picture>
                             ))
                         }
