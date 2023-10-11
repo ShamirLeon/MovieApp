@@ -7,10 +7,12 @@ import { IResult, IMoviesApp } from '@/Interfaces/Movies.interface';
 import { useState, useEffect } from 'react';
 
 import { Axios } from '@/API_CONFIG';
+import MovieCardSkeleton from './MovieCardSkeleton';
 
 export default function UpcomingMovies() {
 
     const [UpcomingMovies, setUpcomingMovies] = useState<IResult[] | null>();
+    const [isLoading, setIsLoading] = useState(true);
 
     const getMoviesContainer = () => {
         const moviesContainer = document.getElementById('MovieContainer');
@@ -42,11 +44,12 @@ export default function UpcomingMovies() {
 
         const response = await Axios.get(`/movie/upcoming?language=en-US&page=${randomNumber}`)
 
-        const filteredResults = await response.data.results.filter((result:any)=>{
+        const filteredResults = await response.data.results.filter((result: any) => {
             return result.backdrop_path !== null;
         })
+        setIsLoading(false);
+        setUpcomingMovies(filteredResults);
 
-        setUpcomingMovies(filteredResults)
     };
 
     useEffect(() => {
@@ -57,6 +60,7 @@ export default function UpcomingMovies() {
         <section className={styles.UpcomingContainer}>
             <h2>Upcoming</h2>
             <div id='MovieContainer' className={styles.MoviesContainer}>
+                {isLoading && <MovieCardSkeleton number={4} />}
                 {
                     UpcomingMovies && UpcomingMovies.map((movie: IResult) => (
                         <MovieCard key={movie.id} movie={movie} />

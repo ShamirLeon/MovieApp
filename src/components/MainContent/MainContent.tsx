@@ -9,6 +9,7 @@ import { MovieContext } from "@/Context/MoviesContext";
 
 import { Axios } from "@/API_CONFIG";
 import Category from "../Category/Category";
+import MainContentSkeleton from "./MainContentSkeleton";
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
@@ -60,8 +61,7 @@ export default function MainContent() {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {!loading && results && (
+      {!loading && results ? (
         <div className={styles.MainContent}>
           <Link href={`/${results[randomNumbers[0]]?.id}`}
             className={`${styles.MainContent__Section} ${styles.MainContent__SectionFirst}`}
@@ -123,7 +123,8 @@ export default function MainContent() {
             <div className={styles.superposition}></div>
           </Link>
         </div>
-      )}
+      ) : <MainContentSkeleton />
+      }
     </>
   );
 }
