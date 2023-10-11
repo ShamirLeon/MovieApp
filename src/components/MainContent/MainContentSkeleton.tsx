@@ -15,8 +15,8 @@ function MainContentSkeleton() {
                 <p style={{width:'70%'}}><Skeleton count={3}></Skeleton></p>
                 <div className={styles.MainContent__Categories}>
                     {
-                        ['', '', ''].map(item => (
-                            <Skeleton width={70} height={36}></Skeleton>
+                        ['', '', ''].map((item, i) => (
+                            <Skeleton width={70} height={36} key={i}></Skeleton>
                         ))
                     }
                 </div>
