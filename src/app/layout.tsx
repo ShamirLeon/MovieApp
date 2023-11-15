@@ -4,8 +4,10 @@ import { Figtree } from 'next/font/google'
 
 import NavBar from '@/components/NavBar/NavBar'
 import Ligth from '@/components/Ligth/Ligth'
+import { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
-const figtree = Figtree({ subsets: ['latin'], weight:['400', '700'] })
+const figtree = Figtree({ subsets: ['latin'], weight: ['400', '700'] })
 
 export const metadata: Metadata = {
   title: 'Shamy Movie Application',
@@ -20,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={figtree.className}>
-        <NavBar />
-        <Ligth left={-150} top={-150}/> 
-        {/* <Ligth id={2}/> */}
-        {children}
+        <SkeletonTheme baseColor='#313131' highlightColor='#525252'>
+          <NavBar />
+          <Ligth left={-150} top={-150} />
+          {/* <Ligth id={2}/> */}
+          {children}
+        </SkeletonTheme>
       </body>
     </html>
   )

@@ -3,14 +3,14 @@ import AlsoLike from "./AlsoLike";
 import { IMovieRecommendations } from "@/Interfaces/Movies.interface";
 
 interface Props {
-    movies: IMovieRecommendations;
+    id: number;
 }
 
-export default function AlsoLikeContainer({movies}:Props) {
+export default function AlsoLikeContainer({id}:Props) {
     return (
         <>
             <MovieProvider>
-                <AlsoLike movies={movies.results}/>
+                <AlsoLike id={id}/>
             </MovieProvider>
         </>
     )

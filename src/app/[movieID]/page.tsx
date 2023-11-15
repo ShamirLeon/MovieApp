@@ -1,4 +1,4 @@
-import { IMovieDetails, IMovieCredits, IMovieImages, IMovieRecommendations } from "@/Interfaces/Movies.interface";
+import { IMovieDetails, IMovieCredits, IMovieImages } from "@/Interfaces/Movies.interface";
 
 import Rating from "@/components/Rating/Rating";
 
@@ -37,14 +37,7 @@ async function getMovieImages(id: number) {
         console.log(error);
     }
 }
-async function getMovieRecommendations(id: number) {
-    try {
-        const movieRecommendations = await Axios.get(`/movie/${id}/recommendations?page=1`, options);
-        return movieRecommendations.data;
-    } catch (error) {
-        console.log(error);
-    }
-}
+
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_TMDB_URL;
 
@@ -54,7 +47,6 @@ export default async function MovieDetaisPage({ params }: any) {
     const movieDetails: IMovieDetails = await getMovieDetails(movieID);
     const movieCredits: IMovieCredits = await getMovieCredits(movieID);
     const movieImages: IMovieImages = await getMovieImages(movieID);
-    const movieRecommendations: IMovieRecommendations = await getMovieRecommendations(movieID);
 
     const { title, overview, backdrop_path, vote_average, genres } = movieDetails;
 
@@ -71,7 +63,7 @@ export default async function MovieDetaisPage({ params }: any) {
             <div className={styles.Main_Section}>
                 <img className={styles.Main_Section_Img} src={`${IMG_URL}original${backdrop_path}`} alt="" />
                 <div>
-                    <Rating rating={parseFloat(vote_average.toFixed(1))} top={40} />
+                    <Rating rating={vote_average} top={40} />
                 </div>
                 <div className={styles.Texts_Container}>
                     <div className={styles.TitleContainer}>
@@ -87,7 +79,7 @@ export default async function MovieDetaisPage({ params }: any) {
                     <p>{overview}</p>
                     <div className={styles.Cast}>
                         <div className={styles.TitleContainer}>
-                            <h2 style={{animationDelay:'.8s'}}>Cast</h2>
+                            <h2 style={{ animationDelay: '.8s' }}>Cast</h2>
                         </div>
                         <div className={styles.Cast_Images}>
                             {
@@ -116,7 +108,7 @@ export default async function MovieDetaisPage({ params }: any) {
                         }
                     </div>
                 </div>
-                <AlsoLikeContainer movies={movieRecommendations} />
+                <AlsoLikeContainer id={movieID} />
             </div>
         </section>
     )

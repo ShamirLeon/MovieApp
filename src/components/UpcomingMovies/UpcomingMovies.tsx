@@ -4,15 +4,14 @@ import MovieCard from './MovieCard';
 import styles from '@/Styles/components/UpcomingMovies.module.scss'
 
 import { IResult, IMoviesApp } from '@/Interfaces/Movies.interface';
-import { useState, useEffect } from 'react';
 
 import { Axios } from '@/API_CONFIG';
 import MovieCardSkeleton from './MovieCardSkeleton';
+import useSWR from 'swr';
 
 export default function UpcomingMovies() {
-
-    const [UpcomingMovies, setUpcomingMovies] = useState<IResult[] | null>();
-    const [isLoading, setIsLoading] = useState(true);
+    const randomNumber = getRandomNumber();
+    const { data, error, isLoading } = useSWR(`/movie/upcoming?language=en-US&page=${randomNumber}`, getUpcomingMovies);
 
     const getMoviesContainer = () => {
         const moviesContainer = document.getElementById('MovieContainer');
@@ -33,7 +32,7 @@ export default function UpcomingMovies() {
         })
     }
 
-    async function getUpcomingMovies() {
+    function getRandomNumber() {
         let randomNumber;
         while (true) {
             randomNumber = Math.trunc(Math.random() * 10);
@@ -41,29 +40,28 @@ export default function UpcomingMovies() {
                 break;
             }
         }
+        return randomNumber
+    }
 
-        const response = await Axios.get(`/movie/upcoming?language=en-US&page=${randomNumber}`)
+    async function getUpcomingMovies(url: string) {
+        const response = await Axios.get(url)
 
-        const filteredResults = await response.data.results.filter((result: any) => {
+        const filteredResults = response.data.results.filter((result: any) => {
             return result.backdrop_path !== null;
         })
-        setIsLoading(false);
-        setUpcomingMovies(filteredResults);
 
+        return filteredResults
     };
-
-    useEffect(() => {
-        getUpcomingMovies();
-    }, [])
 
     return (
         <section className={styles.UpcomingContainer}>
             <h2>Upcoming</h2>
             <div id='MovieContainer' className={styles.MoviesContainer}>
                 {isLoading && <MovieCardSkeleton number={4} />}
+                {error ? <span>Error when fetching data</span> : '' }
                 {
-                    UpcomingMovies && UpcomingMovies.map((movie: IResult, index) => (
-                        <MovieCard key={index} movie={movie} delay={400 + (index * 80)}/>
+                    data && data.map((movie: IResult, index: number) => (
+                        <MovieCard key={index} movie={movie} delay={400 + (index * 80)} />
                     ))
                 }
             </div>
