@@ -1,33 +1,34 @@
 import Link from 'next/link'
 import Image from 'next/image'
-
+import logo from '@/app/logo.png'
 import styles from '@/Styles/components/NavBar.module.scss'
 
-const links = [{
-    label: 'Home',
-    route: '/',
-    icon: 'fi fi-rr-home'
-},
-{
-    label: 'Search',
-    route: '/search',
-    icon: 'fi fi-rs-search'
-},
-{
-    label: 'Favourites',
-    route: '/favourites',
-    icon: 'fi fi-rr-heart'
-},
-{
-    label: 'Series',
-    route: '/series',
-    icon: 'fi fi-rr-screen'
-},
-{
-    label: 'Profile',
-    route: '/profile',
-    icon: 'fi fi-rs-user'
-}]
+const links = [
+    {
+        label: 'Home',
+        route: '/',
+        icon: 'fi fi-rr-home'
+    },
+    {
+        label: 'Search',
+        route: '/search',
+        icon: 'fi fi-rs-search'
+    },
+    {
+        label: 'Favourites',
+        route: '/favourites',
+        icon: 'fi fi-rr-heart'
+    },
+    {
+        label: 'Series',
+        route: '/series',
+        icon: 'fi fi-rr-screen'
+    },
+    {
+        label: 'Profile',
+        route: '/profile',
+        icon: 'fi fi-rs-user'
+    }]
 
 const imageStyle = {
     borderRadius: '50%',
@@ -36,7 +37,10 @@ const imageStyle = {
 export default function NavBar() {
     return (
         <nav className={styles.NavBar}>
-            <Link href={links[0].route}>{links[0].label}</Link>
+            <Link href={links[0].route} className={styles.NavBar__Title}>
+                <i className="fi fi-sr-popcorn"></i>
+                Film Nest
+            </Link>
             <ul>
                 {
                     links.map(({ label, route, icon }) => (

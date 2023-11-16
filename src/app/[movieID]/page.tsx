@@ -7,6 +7,8 @@ import Category from "@/components/Category/Category";
 
 import AlsoLikeContainer from "@/components/AlsoLike/AlsoLikeContainer";
 import { Axios, CustomAxiosRequestConfig } from "@/API_CONFIG";
+import HeartIcon from "../heartIcon";
+import Image from "next/image";
 
 
 const options: CustomAxiosRequestConfig = {
@@ -67,7 +69,10 @@ export default async function MovieDetaisPage({ params }: any) {
                 </div>
                 <div className={styles.Texts_Container}>
                     <div className={styles.TitleContainer}>
-                        <h1 className="">{title}</h1>
+                        <h1>{title}</h1>
+                        <button className={styles.FavsBtn}>
+                            <HeartIcon fill={'#B40000'} className={styles.svg}></HeartIcon>
+                        </button>
                     </div>
                     <div className={styles.Categories}>
                         {

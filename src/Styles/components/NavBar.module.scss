@@ -1,37 +1,51 @@
-.NavBar{
-    width: var(--Nav-Width);
-    height: 100vh;
-    background-color: var(--Dark-Blue-Bg);
-    backdrop-filter: blur(var(--Backdrop-Filter));
+.NavBar {
+  width: var(--Nav-Width);
+  height: 100vh;
+  background-color: var(--Dark-Blue-Bg);
+  backdrop-filter: blur(var(--Backdrop-Filter));
 
-    position: fixed;
+  position: fixed;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+
+  & ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 24px;
+  }
+
+  & a {
+    color: var(--White);
+    text-decoration: none;
+  }
+
+  &__Title {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.5s ease-in-out;
+
+    &:hover {
+      color: var(--Accent-Blue);
+    }
+  }
+
+  &__Li {
+    display: flex;
+    gap: 8px;
     align-items: center;
-    padding: 40px 0;
+    list-style: none;
+    transition: color 0.3s ease-in-out;
 
-    & ul{
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+    &:hover {
+      color: var(--Accent-Blue);
     }
-
-    & a{
-        color: var(--White);
-        text-decoration: none;
-    }
-
-    &__Li{
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        list-style: none;
-        transition: color .3s ease-in-out;
-
-        &:hover{
-            color: var(--Accent-Blue);
-        }
-    }   
+  }
 }
