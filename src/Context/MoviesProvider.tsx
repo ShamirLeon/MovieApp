@@ -42,6 +42,8 @@ export default function MovieProvider({
     useEffect(() => {
         getGenres();
     }, [])
+
+    /* Test git */
     
     return (
         <MovieContext.Provider value={{
